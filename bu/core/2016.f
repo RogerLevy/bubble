@@ -82,9 +82,9 @@ fixed
 : src!  to src ;
 : dest!  to dest ;
 
-[undefined] @+ [if] [then]
-[undefined] !+ [if] [then]
-[undefined] ~!+ [if] [then]
+[undefined] @+ [if]  : @+  dup @ cell u+ ;  [then]
+[undefined] !+ [if]  : !+   over !  cell+ ;  [then]
+[undefined] ~!+ [if]  : ~!+  tuck !  cell+ ;  [then]
 
 : ifill  ( c-addr count val - )  -rot  0 do  over !+  loop  2drop ;
 : ierase   0 ifill ;
@@ -92,7 +92,7 @@ fixed
 
 : time?  ucounter 2>r  execute  ucounter 2r> d-  d>s  i. ;                      ( xt - )  \ print time given XT takes in microseconds
 
-\ fixed-point-to-floats-on-stack primitives (mainly for ALlegro 5)
+\ fixed-point-to-floats-on-stack primitives (mainly for Allegro 5)
 : 1af  1f 1sf ;
 : 2af  1f 1f 1sf 1sf ;
 : 3af  1f 1f 1f 1sf 1sf 1sf ;
