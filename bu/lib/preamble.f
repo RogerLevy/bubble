@@ -57,6 +57,10 @@ cr .( loaded fixed point extension )
 include bu/lib/allegro-5.2/allegro-5.2.f
 cr .( loaded allegro 5.2 bindings )
 
+\ OpenGL Subset
+include bu/lib/opengl/opengl-lite.f
+cr .( loaded OpenGL )
+
 \ temporary dev tool - reload from the top
 : rld  ( -- )  s" dev.f" included ;
 
