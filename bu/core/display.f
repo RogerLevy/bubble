@@ -8,6 +8,7 @@
 0 value allegro?
 0 value eventq
 0 value display
+create native  /ALLEGRO_DISPLAY_MODE /allot
 
 \ --------------------------- initializing allegro ----------------------------
 
@@ -28,9 +29,16 @@
   not if  " Allegro: Couldn't initialize keyboard." alert         -1 abort then
   al_install_joystick
   not if  " Allegro: Couldn't initialize joystick." alert         -1 abort then
+  ALLEGRO_VSYNC #1 ALLEGRO_SUGGEST  al_set_new_display_option
+  al_get_num_display_modes #1 -  native  al_get_display_mode
 ;
 
 assertAllegro
+
+: nativew   native x@ s>p ;
+: nativeh   native y@ s>p ;
+: displayw  display al_get_display_width s>p ;
+: displayh  display al_get_display_height s>p ;
 
 \ -------------------- starting/stopping the frame timer ----------------------
 
@@ -44,7 +52,6 @@ assertAllegro
   assertAllegro
   al_create_event_queue  to eventq
   ALLEGRO_VSYNC #1 ALLEGRO_SUGGEST  al_set_new_display_option
-  #0 #40 al_set_new_window_position
 
   0
     ALLEGRO_WINDOWED or
@@ -74,8 +81,15 @@ assertAllegro
 
 : valid?  ['] @ catch nip 0 = ;
 
+: resizeDisplay  ( w h -- )
+    2i 2dup  display -rot al_resize_display 0= abort" Couldn't set the display size."
+\    2drop
+       0 0 2over glViewport
+       0e 2s>f 0e 0e 1e glOrtho
+    ;
+
 fixed
-: +display  display valid? ?exit  640 480 initDisplay ;
+: +display  display valid? ?exit  nativew nativeh initDisplay  640 480 resizeDisplay ;
 : -display  display valid? -exit
     display al_destroy_display  0 to display
     eventq al_destroy_event_queue  0 to eventq
@@ -94,12 +108,5 @@ fixed
     ide
 [then]
 
-create native  /ALLEGRO_DISPLAY_MODE /allot
-  al_get_num_display_modes #1 -  native  al_get_display_mode
-
-: nativew   native x@ s>p ;
-: nativeh   native y@ s>p ;
-: displayw  display al_get_display_width s>p ;
-: displayh  display al_get_display_height s>p ;
 
 +display

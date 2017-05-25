@@ -29,7 +29,10 @@ private:
     : wait  eventq e al_wait_for_event ;
     : std
       etype ALLEGRO_EVENT_DISPLAY_RESIZE = if
-        display al_acknowledge_resize
+        \ display al_acknowledge_resize  \ DO NOT acknowledge; this is on purpose.  acknowledging recreates bitmaps.
+                                         \ instead, we initially create the display at native resolution and immediately
+                                         \ resize it to the default size
+        e ALLEGRO_DISPLAY_EVENT-width 2v@ 2s>p resizeDisplay
       then
       etype ALLEGRO_EVENT_DISPLAY_SWITCH_OUT = if  -timer  then
       etype ALLEGRO_EVENT_DISPLAY_SWITCH_IN = if  clearkb  +timer false to alt?  then
@@ -64,7 +67,9 @@ variable winx  variable winy
     else
         fs @ if     display winx winy al_get_window_position  then
     then ;
-: ?fs     ?poswin  display ALLEGRO_FULLSCREEN_WINDOW fsflag al_toggle_display_flag ?fserr ;
+: ?fs
+    ?poswin  display ALLEGRO_FULLSCREEN_WINDOW fsflag al_toggle_display_flag ?fserr
+    fs @ if  nativew nativeh resizeDisplay then ;
 
 : render  ?fs  1-1  'render try to renderr   al_flip_display  0 to lag ;
 : ?render  update? -exit  1 +to #frames  render ;
