@@ -1,3 +1,6 @@
 [submodule "bu"]
 	path = bu
 	url = https://github.com/RogerLevy/bu.git
+[submodule "ws"]
+	path = ws
+	url = https://github.com/RogerLevy/ws.git
