@@ -9,5 +9,5 @@ bu: idiom rect2:
 : @xy   2v@ ;                          : !xy   2v! ;
 : @wh   cell+ cell+ 2v@ ;              : !wh   cell+ cell+ 2v! ;
 
-include mo/rect-generics
-include mo/rect-tests
+include bu/mo/rect-generics
+include bu/mo/rect-tests

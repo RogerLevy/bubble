@@ -21,8 +21,8 @@
 
 bu: idiom ide:
 [defined] linux [if]  [else]  include bu/lib/win-clipboard.f  [then]
-import mo/draw
-import mo/rect
+import bu/mo/draw
+import bu/mo/rect
 
 variable consolas
 consolas value cmdfont
@@ -228,9 +228,9 @@ function: al_load_ttf_font  ( zfilename size flags -- font )
 ;
 : /cmdline
     /s
-    \ z" dev/data/dev/consolas16.png" al_load_bitmap_font  consolas !
+    \ z" bu/dev/data/consolas16.png" al_load_bitmap_font  consolas !
     soft
-    z" dev/data/dev/consolab.ttf" #20 ALLEGRO_TTF_NO_KERNING al_load_ttf_font  consolas !
+    z" bu/dev/data/consolab.ttf" #20 ALLEGRO_TTF_NO_KERNING al_load_ttf_font  consolas !
     /output
     1 1 1 1 cursor colour 4!
     /margins

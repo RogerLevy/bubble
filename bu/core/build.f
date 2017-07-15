@@ -7,7 +7,7 @@
 \  create normal exe and execute
 
 bu: idiom build:
-import mo/cellstack
+import bu/mo/cellstack
 
 private:
     get-order  dup cellstack Order  set-order

@@ -52,11 +52,11 @@
 \  the workspace.
 
 bu: idiom ws:
-import mo/porpoise
-import mo/node
-import mo/draw
-import mo/rect
-import mo/portion
+import bu/mo/porpoise
+import bu/mo/node
+import bu/mo/draw
+import bu/mo/rect
+import bu/mo/portion
 
 xmessage paint   ( obj -- obj )
 xmessage respond ( obj -- obj )

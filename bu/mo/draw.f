@@ -1,7 +1,7 @@
 \ Basic graphics wordset
-import mo/pen        \ parent should also import the pen in order to use this package.
+import bu/mo/pen        \ parent should also import the pen in order to use this package.
 bu: idiom draw:      \ do this first so early-out works
-import mo/pen        \ don't remove this.  parent may be different from bu:
+import bu/mo/pen        \ don't remove this.  parent may be different from bu:
 
 private:
     : push postpone >r ; immediate

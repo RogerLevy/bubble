@@ -5,7 +5,7 @@
 idiom [dumb]
 
 include examples/dumbtest/words
-import mo/flood
+import bu/mo/flood
 include sa/keyboard
 
 
