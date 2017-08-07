@@ -6,7 +6,7 @@ tmx: fixed
 
 " ex/lk/test.tmx" opentmx
 : .tilesets
-    cr .( Tilesets: )
+    cr ." Tilesets: "
     #tilesets 0 do
         cr
         i tileset[]
@@ -27,3 +27,21 @@ tmx: fixed
 2048 2048 array2d tilemap
 cr .( Extracting tilemap... )
 0 layer[]  0 0 tilemap addr  2048 cells  extract
+tilemap 2d.
+
+: .objgroup
+    cr ."  Group: "  dup @name type
+    objects>
+        cr ."   GID: "  dup @gid .
+            dup ?name if  ."  Name: " type  then
+            dup ?type if ."   Type: " type  then 
+            ."   Pos: "   dup @xy 2.
+            ."   Dims: "  dup @wh 2.
+        drop
+;
+: .objects
+    cr ." Object groups: "
+    #objgroups for
+        i objgroup[] .objgroup
+    loop ;
+.objects
