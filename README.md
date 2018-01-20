@@ -2,6 +2,8 @@
 
 A game development framework for ANS-compliant Forth systems.  (Currently only SwiftForth/Windows is supported.)
 
+This serves as the basis for Lantern, an experimental game engine. https://github.com/RogerLevy/lantern
+
 ## Requirements
 - SwiftForth for Windows
 - Windows 7 and up
