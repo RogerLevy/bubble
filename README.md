@@ -1,6 +1,6 @@
 **THIS PROJECT IS DEPRECATED.**
 
-It is being superceded by [AllegroForthKit](https://github.com/RogerLevy/AllegroForthKit) which is the foundation for the game engine [RAMEN](https://github.com/RogerLevy/ramen)
+Bubble has been superceded by [AllegroForthKit](https://github.com/RogerLevy/AllegroForthKit) which is the foundation for the game engine [RAMEN](https://github.com/RogerLevy/ramen)
 
 # Bubble
 
